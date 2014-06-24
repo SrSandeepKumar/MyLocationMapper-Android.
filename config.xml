@@ -7,6 +7,9 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
+    <feature name="Geolocation">
+    	<param name="android-package" value="org.apache.cordova.GeoBroker" />
+	</feature>
     <content src="index.html" />
     <access origin="*" />
 </widget>
