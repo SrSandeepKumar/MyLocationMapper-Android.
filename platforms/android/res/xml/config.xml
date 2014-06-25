@@ -5,6 +5,10 @@
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
+    <feature name="Storage">
+        <param name="android-package" value="org.apache.cordova.Storage" />
+    </feature>
+
     <feature name="GoogleMaps">
         <param name="android-package" value="plugin.google.maps.GoogleMaps" />
     </feature>
