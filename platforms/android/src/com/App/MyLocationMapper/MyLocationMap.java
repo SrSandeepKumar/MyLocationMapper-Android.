@@ -20,6 +20,8 @@
 package com.App.MyLocationMapper;
 
 import android.os.Bundle;
+import android.view.Window;
+
 import org.apache.cordova.*;
 
 public class MyLocationMap extends CordovaActivity 
@@ -27,10 +29,13 @@ public class MyLocationMap extends CordovaActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+    	getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+    	super.setBooleanProperty("showTitle", true);
         super.onCreate(savedInstanceState);
         super.init();
         // Set by <content src="index.html" /> in config.xml
         super.loadUrl(Config.getStartUrl());
+        getActionBar();
         //super.loadUrl("file:///android_asset/www/index.html");
     }
 }

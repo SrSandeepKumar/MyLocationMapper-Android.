@@ -12,6 +12,10 @@
     <feature name="GoogleMaps">
         <param name="android-package" value="plugin.google.maps.GoogleMaps" />
     </feature>
+    <feature name="ActionBar">
+        <param name="android-package" value="com.native5.plugins.ActionBarPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <name>MyLocationMap</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

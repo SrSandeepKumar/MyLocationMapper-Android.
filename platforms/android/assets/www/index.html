@@ -35,29 +35,9 @@
 </head>
 
 <body>
-    
-<!-- the header top Bar --> 
-   <!--  <div class="top-bar">
-        <div class="logo-start">
-            <i class="fa fa-flag fa-1x"></i>
-        </div>
-        <div class="app-name"> My Locaion Mapper</div>
-        <div class="logo-settings">
-            <a href="#popupBasic" data-rel="popup">
-                <i class="fa fa-cog fa-spin"> </i>
-           </a>
-        </div>
-    </div> -->
+    <div id="map_canvas"> </div>
 
-<!-- the pop up on the spinning-setting icon , it was decided to build a listview on click for the purpose of testing is has been made as a side scroll-->
-    <div data-role="popup" id="popupBasic" data-transition="slide" style="z-index: 1200">
-    <p>This is a completely basic popup, no options set.<p>
- </div>
 
-<!-- the map div  -->
-    <div id="map_canvas" style="height=50% width=50%"> </div>
-
-<!-- The footer bar section consisting of start and stop buttons -->
     <div class="bottom-logo">
         <div class="bstart" >
             <a class="btn btn-danger" href="#">
@@ -74,7 +54,46 @@
 <script type="text/javascript" src="resources/scripts/index.js"></script>
 <script src="resources/scripts/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="resources/scripts/map-api.js"></script>
-<script type="text/javascript" src="resources/scripts/jquery.mobile-1.4.2.min.js"></script>   
+<script type="text/javascript">
+    document.addEventListener('deviceready', function() {
+        window.plugins.navBar.setMenu([
+            {
+                text: 'Home',
+                click: function() {}
+            },
+            {
+                text: 'Terms',
+                click: function() {}
+            }
+        ], function(e) {
+            console.log(e);
+        });
+
+        window.plugins.navBar.setTabs([
+            { 
+                text: ' 1',
+                selected:true,
+                select: function() {}
+            },
+            { 
+                text: ' 2',
+                selected: false,
+                select: function() {}
+            },
+            { 
+                text: '3',
+                selected: false,
+                select: function() {}
+            }
+        ], function(e) {
+            console.log(e);
+        });
+        window.plugins.navBar.setNavigationMode(window.plugins.navBar.NAVIGATION_MODE_TABS);
+        window.plugins.navBar.setSelectedTab(0);
+        window.plugins.navBar.show();
+
+    });
+</script> 
     
 
     </body>

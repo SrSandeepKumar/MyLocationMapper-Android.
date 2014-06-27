@@ -10,7 +10,7 @@
         var options = { maximumAge: 3000, timeout: 10000, enableHighAccuracy: true };
         var div = document.getElementById("map_canvas");
         map = plugin.google.maps.Map.getMap(div);
-        var watchID = navigator.geolocation.watchPosition(onSuccess, onError,options);
+        var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError,options);
 
     }, false);
 
@@ -21,7 +21,8 @@
         map.addMarker(
             {
                 'position': abc,
-                'title': "You are Here"
+                'title': "You are Here",
+                // 'icon' : 'resources/images/mark.png'
             }, function(marker) {
                 marker.showInfoWindow();
         });
@@ -35,13 +36,13 @@
 
         $( "#bstart" ).on("click",function() {
             alert("Starting location tracking");
-            /*  var count = 0 ;
-                var locArray = [];
+            //   var count = 0 ;
+            //     var locArray = [];
+                   plotLine(locArray.push[abc]);
+            //     locArray[count] = abc;
+            //     count++;
+            //     alert(count);
            
-                locArray[count] = abc;
-                count++;
-                alert(count);
-           */
         });
 
         $( "#bstop" ).on("click",function() {
@@ -51,55 +52,26 @@
             watchID = null;
         }
 
+
+        function plotLine(dots){
+            map.addPolyline({
+              points: [
+              abc
+              ],
+              'color' : '#AA00FF',
+              'width': 10,
+              'geodesic': true
+          }, function(polyline) {
+
+              setTimeout(function() {
+                polyline.remove();
+            }, 3000);
+          });
+        }
+
         });
     }
 
     function onError(error) {
         alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-         
-            // This is the function that will be called when the START BUTTON is clicked .
-    /*startStoring(){
-
-      alert("have entered into startStoring block");
-
-      alert(onBtn2Click);
-      // if(!onBtn2Click){
-        var count=0;
-        var array = [];
-        array[count]=abc;
-      // }
-      count++;
-    }*/
-    // alert("Exiting the startStoring block");
-
-    // Now that i am done with adding the Start-Stop storing ops. i wil have to join the points therefore ...
-    // map.addPolyline({
-     
-     // for Specifying the points in displaying the lines on the map 
-    /*for(var l=0;l<=array.length;l++){
-      points: [
-        array[l];
-      ]},
-      'color' : '#AA00FF',
-      'width': 10,
-      'geodesic': true
-    }, function(polyline) {
-
-      setTimeout(function() {
-        polyline.remove();
-      }, 3000);
-    });
-    */ 
