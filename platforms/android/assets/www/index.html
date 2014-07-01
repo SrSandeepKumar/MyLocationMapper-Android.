@@ -54,46 +54,7 @@
 <script type="text/javascript" src="resources/scripts/index.js"></script>
 <script src="resources/scripts/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="resources/scripts/map-api.js"></script>
-<script type="text/javascript">
-    document.addEventListener('deviceready', function() {
-        window.plugins.navBar.setMenu([
-            {
-                text: 'Home',
-                click: function() {}
-            },
-            {
-                text: 'Terms',
-                click: function() {}
-            }
-        ], function(e) {
-            console.log(e);
-        });
-
-        window.plugins.navBar.setTabs([
-            { 
-                text: ' 1',
-                selected:true,
-                select: function() {}
-            },
-            { 
-                text: ' 2',
-                selected: false,
-                select: function() {}
-            },
-            { 
-                text: '3',
-                selected: false,
-                select: function() {}
-            }
-        ], function(e) {
-            console.log(e);
-        });
-        window.plugins.navBar.setNavigationMode(window.plugins.navBar.NAVIGATION_MODE_TABS);
-        window.plugins.navBar.setSelectedTab(0);
-        window.plugins.navBar.show();
-
-    });
-</script> 
+<script type="text/javascript" src="resources/scripts/nav-bar.js"></script> 
     
 
     </body>

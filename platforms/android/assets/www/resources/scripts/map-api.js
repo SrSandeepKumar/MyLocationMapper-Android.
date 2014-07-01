@@ -21,7 +21,8 @@
         map.addMarker(
             {
                 'position': abc,
-                'title': "You are Here",
+                'animation':google.maps.Animation.BOUNCE,
+                'title': "You are Here"
                 // 'icon' : 'resources/images/mark.png'
             }, function(marker) {
                 marker.showInfoWindow();
