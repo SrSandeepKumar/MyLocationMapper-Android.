@@ -47,3 +47,13 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+$(document).ready(function(){
+    $(".btn").popover({
+        placement : 'top'
+    });
+});
+
+$('#openBtn').click(function(){
+    $('#myModal').modal({show:true})
+});
