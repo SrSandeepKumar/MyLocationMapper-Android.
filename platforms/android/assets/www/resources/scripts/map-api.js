@@ -10,27 +10,31 @@
         var watchID = null ;
         var options = { maximumAge: 3000, timeout: 10000, enableHighAccuracy: true };
         var div = document.getElementById("map_canvas");
-            map = plugin.google.maps.Map.getMap(div);
+
+        map = plugin.google.maps.Map.getMap(div);
+
         var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError,options);
+        // alert(1);
+
         /*var db = window.openDatabase("location", "1.0", "LocationDB", 1000000);
             
          db.transaction(populateDB, errorCB, successCB);*/
          
     }, false);
 
-    $( ".bottom-logo" ).show( "slow",function(){
-         // var time = position.timestamp ;
+    // $( ".bottom-logo" ).show( "slow",function(){
+    //      // var time = position.timestamp ;
          
          
-    });
+    // });
 
     function onSuccess(position) {
 
          var abc = new plugin.google.maps.LatLng(position.coords.latitude,position.coords.longitude);
          time = position.timestamp ;
-         $(".bottom-logo").append( "time: " + (new Date(time)).toLocaleTimeString()) ;
-         $(".bottom-logo").append( "time: " + (new Date(time)).toLocaleTimeString()) ;
-         alert("time: " + (new Date(time)).toLocaleTimeString());
+         $(".time").append( ""+(new Date(time)).toLocaleTimeString()) ;
+         $(".distance").append( ""+(new Date(time)).toLocaleTimeString()) ;
+         // alert("time: " + (new Date(time)).toLocaleTimeString());
          // db.transaction(queryDB, errorCB);
 
         map.addMarker(
@@ -49,25 +53,6 @@
             'zoom': 18,
             'bearing': 140
         });
-/*
-        $( "#bstart" ).on("click",function() {
-            alert("Starting location tracking");
-            //   var count = 0 ;
-            //     var locArray = [];
-            // plotLine(locArray.push[abc]);
-            //     locArray[count] = abc;
-            //     count++;
-            //     alert(count);
-
-        });
-
-        $( "#bstop" ).on("click",function() {
-            // clearInterval(tracker);
-           /* if (watchID != null) {
-            navigator.geolocation.clearWatch(watchID);
-            watchID = null;
-        });
-*/
 
         function plotLine(dots){
             map.addPolyline({

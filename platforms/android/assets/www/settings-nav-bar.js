@@ -1,7 +1,7 @@
 document.addEventListener('deviceready', function() {
      /*   */
 
-     window.plugins.navBar.setMenu([
+    /* window.plugins.navBar.setMenu([
      {
         text: 'Start',
         click: function() {
@@ -13,7 +13,7 @@ document.addEventListener('deviceready', function() {
     {
         text: 'Stop',
         click: function() {
-                       /**/
+                      
         alert('In the stop section');
         storeArray();
         if (watchID != null) {
@@ -26,7 +26,7 @@ document.addEventListener('deviceready', function() {
     ], function(e) {
         console.log(e);
     });
-
+*/
 
     window.plugins.navBar.setTabs([
         { 
@@ -34,9 +34,9 @@ document.addEventListener('deviceready', function() {
             selected:true,
             select: function() {
                // google.maps.event.addDomListener(window, 'load', initialize); s
-                // map.refreshLayout();
-                //  map.setVisible(true);
-               // window.location = "index.html";
+                map.refreshLayout();
+                map.setVisible(true);
+               // // window.location = "index.html";
             }
         },
 
@@ -45,24 +45,16 @@ document.addEventListener('deviceready', function() {
             selected: false,
             select: function() {
                 alert("settings");
-                
-
-            // });
+                /*// $('#openBtn').click(function(){
+                $('#myModal').modal({show:true})
+            // });*/
                     // map = null;
                 map.refreshLayout();
                 map.setVisible(false);
                 window.location = "settings.html";
-                // startStoring();
+                startStoring();
                 // $('#myModal').modal('toggle');
-
-                $('.list').on('load',function(){
-                 var listHistory = queryDB();
-                 for (var i = 0; i <= listHistory.length - 1; i++) {
-                       // listHistory[i]
-                       $(".list").append("<li>"+listHistory[i]+"<checkbox class = "+data[i]+"></li>");
-                   };
-               });
-                
+                $('#myModal').modal('show');
             }
         }/*,
                 { 
@@ -89,8 +81,8 @@ function storeArray(){
 }
 function populateDB(tx) {
     // tx.executeSql('DROP TABLE IF EXISTS DEMO');
-    tx.executeSql('CREATE TABLE IF NOT EXISTS LocationDB (id INTEGER PRIMARY KEY,array)');
-    tx.executeSql('INSERT INTO LocationDB (id , array) VALUES (,abc)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS LocationDB (id)');
+    tx.executeSql('INSERT INTO LocationDB (id) VALUES (abc)');
 }
 
 function errorCB(tx, err) {
@@ -105,23 +97,4 @@ function successCB() {
 
 function stopStoring(){
 
-}
-
-function queryDB(tx) {
-    tx.executeSql('SELECT * FROM LocationDB', [], querySuccess, errorCB);
-}
-
-function querySuccess(tx, results) {
-    console.log("Returned rows = " + results.rows.length);
-    // this will be true since it was a select statement and so rowsAffected was 0
-    alert('query sucess block');
-
-    if (!results.rowsAffected) {
-        console.log('No rows affected!');
-        return false;
-    }
-    // for an insert statement, this property will return the ID of the last inserted row
-    alert('query rows inserted');
-
-    console.log("Last inserted row ID = " + results.insertId);
 }

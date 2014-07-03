@@ -49,24 +49,38 @@ div.logo-settings{
   }  
 
 
-/*div.bottom-logo{
+div.bottom-logo{
   z-index: 20000;
-    display: table-cell;
+    /*display: table-cell;*/
     background-color: black;
     /*font: 15em arial,sans-serif;*/
-    font-size: 6em;
+    font-size: 1em;
     color: white;
     width: 99%;
-    height: 4em;
-    box-shadow: 10px 10px 5px #888888;
+    height: 10%;
+    box-shadow: 3px 3px 2px #eee;
     position: fixed;
     bottom: 0.5em;
     
-} */
+} 
+
+
 
 .row{
   background-color: black; 
 }
+
+.time{
+  
+  text-align: center;
+}
+
+.distance{
+  
+  text-align: center;
+  color: white;
+}
+
 
 .btn {
   width:100%;

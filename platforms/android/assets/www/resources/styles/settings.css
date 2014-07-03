@@ -3,8 +3,14 @@ body {
 	text-align: center;
 	font-family: "georgia";
     font-size: 2em;
+    background-image: url('../images/old_map.png');
+    background-size: contain;
 }
 
+.mybtn{
+	display: table-cell;
+	width: 30%;
+}
 /*h4{
 	color: white;
 	box-shadow: 2px 2px 1px #888;
@@ -14,7 +20,7 @@ body {
 table {
 	/*width: 100%;*/
 	/*border: 1px black;*/
-	background-color: black;
+	background-color: lightgreen;
 	color: white;
 	box-shadow: 3px 3px 2px #888;
 	text-align: center;
@@ -30,4 +36,15 @@ tr{
 	height: 2.5em;
 	font-family: sans-serif
 	/*display: table-cell;*/
+}
+
+.footer{
+	/*background-image:  url('../images/greyfloral.png');*/
+	width: 99%;
+	height: 10%;
+	bottom: 0.5em;
+	position: fixed;
+	/*margin-top: -5px;*/
+    vertical-align: center;
+    /*box-shadow: 3px 3px 2px #eee;*/
 }
