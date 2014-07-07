@@ -11,23 +11,12 @@ body {
 	display: table-cell;
 	width: 30%;
 }
-/*h4{
-	color: white;
-	box-shadow: 2px 2px 1px #888;
-	background-color: black  ;
-}*/
 
 table {
-	/*width: 100%;*/
-	/*border: 1px black;*/
 	background-color: lightgreen;
 	color: white;
 	box-shadow: 3px 3px 2px #888;
 	text-align: center;
-	/*vertical-align: center;*/
-	/*height: 5em;*/
-	/*display: flex;*/
-	/*background-color: white;*/
 	width: 100%;
 	display: table-cell;
 }
@@ -39,12 +28,17 @@ tr{
 }
 
 .footer{
-	/*background-image:  url('../images/greyfloral.png');*/
 	width: 99%;
 	height: 10%;
 	bottom: 0.5em;
 	position: fixed;
-	/*margin-top: -5px;*/
     vertical-align: center;
-    /*box-shadow: 3px 3px 2px #eee;*/
+}
+
+.toDelete{
+	width:80%;
+}
+
+.toPlot{
+	width:80%;
 }
