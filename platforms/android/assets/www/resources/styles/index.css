@@ -70,9 +70,10 @@ div.bottom-logo{
   background-color: black; 
 }
 
-.time{
-  
-  text-align: center;
+#time{
+    /*line-height: 100%;*/
+    vertical-align: center;
+    font-size: 0.8em;
 }
 
 .distance{

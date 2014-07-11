@@ -1,3 +1,0 @@
-$(documnet).ready(function(){
-	
-});

@@ -1,150 +1,77 @@
 document.addEventListener('deviceready', function() {
-    /*   */
 
-
-    // var _StopWatch = new StopWatch();
-
-    window.plugins.navBar.setMenu([
-    {
-        text: 'Start',
-        click: function() {
-            alert("start");
-            watchPosition();
-            alert('bye - start');
-            
-            // _StopWatch.start();
-        }
-    },
-
-    {
-        text: 'Stop',
-        click: function() {
-            /**/
-            alert('In the stop section');
-            // storeArray(abc);
-
-            storeLoc(locArray);
-
-            locArray.length = 0;
-
-            if (watchID != null) {
-                navigator.geolocation.clearWatch(watchID);
-                watchID = null;
-            }
-
-            storeLoc(locArray);
-
-            locArray.length = 0;
-
-            alert('bye - stop');
-            // _StopWatch.stop();
-            // alert(_StopWatch.duration());
-        }
+window.plugins.navBar.setMenu([
+{
+    text: 'Start',
+    click: function() {
+        alert("start");
+        watchPosition();
+        alert('bye - start');
+        show();
+        start();
     }
-    ], function(e) {
-        console.log(e);
-    });
+},
 
+{
+    text: 'Stop',
+    click: function() {
 
-    window.plugins.navBar.setTabs([
-    { 
-        text: ' map',
-        selected:true,
-        select: function() {
-            map.setVisible(true);
+        alert('In the stop section');
+
+        storeLoc(locArray);
+        stop();
+        alert("after storeLoc");
+        findDistance();
+        alert("after findDistance");
+        locArray.length = 0;
+
+        if (watchID != null) {
+            navigator.geolocation.clearWatch(watchID);
+            watchID = null;
         }
-    },
 
-    { 
-        text: ' history',
-        selected: false,
-        select: function() {
-            map.refreshLayout();
-            map.setVisible(false);
-            window.location = "settings.html";
-            // showDB();
-        }
+        storeLoc(locArray);
+
+        locArray.length = 0;
+
+        alert('bye - stop');
     }
-
-    ], function(e) {
-        console.log(e);
-    }
-    );
-
-    window.plugins.navBar.setNavigationMode(window.plugins.navBar.NAVIGATION_MODE_TABS);
-    window.plugins.navBar.setSelectedTab(0);
-    window.plugins.navBar.show();
+}
+], function(e) {
+    console.log(e);
 });
 
-/*
-function storeArray(abc){
-    if(locArray.length != null){
-        var db = window.openDatabase("location", "1.0", "LocationDB", 1000000);
-        db.transaction(populateDB(){
-            tx.executeSql('CREATE TABLE IF NOT EXISTS LocationDB (loc)');
-            tx.executeSql('INSERT INTO LocationDB (loc) VALUES (10,20.12451)');
-            tx.executeSql('INSERT INTO LocationDB (loc) VALUES (20,15.25452)');
-            tx.executeSql('INSERT INTO LocationDB (loc) VALUES (30,45.57885)');
 
-
-            var len = location.length;
-            var sqlStr = 'INSERT INTO location (loc) VALUES (abc)';
-            var e;
-            for (var i = 0; i < len; i++) {
-            e = location[i];
-            tx.executeSql(sqlStr, [e.loc], onSqlSuccess, onSqlError);
-            }
-        
-        }, errorCB, successCB);
+window.plugins.navBar.setTabs([
+{ 
+    text: ' map',
+    selected:true,
+    select: function() {
+        map.setVisible(true);
     }
-}
+},
 
-    
-
-function errorCB(tx, err) {
-    alert("Error processing SQL: "+err);s
-}
-
-function successCB() {
-    alert("success!");
-} 
-
-
-
-function stopStoring(){
+{ 
+    text: ' history',
+    selected: false,
+    select: function() {
+        map.refreshLayout();
+        map.setVisible(false);
+        window.location = "history.html";
 
 }
-
-function queryDB(tx) {
-    var r = tx.executeSql('SELECT * FROM LocationDB', [], querySuccess, errorCB);
-    alert("I am inside queryDB");
-    return r;
 }
 
-function querySuccess(tx, results) {
-    console.log("Returned rows = " + results.rows.length);
-    alert('query sucess block');
-
-    if (!results.rowsAffected) {
-        console.log('No rows affected!');
-        return false;
-    }
-
-    alert('query rows inserted');
-
-    console.log("Last inserted row ID = " + results.insertId);
+], function(e) {
+    console.log(e);
 }
-*/
-/*
-functon watchPosition(){
-    --watchposition
-        --onsuccess(
-            locArray.push[abc]
-            plotLine(locArray);
-        )
+);
 
-}
-*/
+window.plugins.navBar.setNavigationMode(window.plugins.navBar.NAVIGATION_MODE_TABS);
+window.plugins.navBar.setSelectedTab(0);
+window.plugins.navBar.show();
+});
+
 function watchPosition(){
     alert('hi - watchPosition');
     var option = { timeout: 30000 };
@@ -156,40 +83,38 @@ function onSuccess(position){
     var abc = new plugin.google.maps.LatLng(position.coords.latitude,position.coords.longitude);
     locArray.push(abc);
     plotLine(locArray);
-    
-    map.addMarker(
-            {
-                'position': abc,
-                // 'animation':google.maps.Animation.BOUNCE,
-                'title': "You are Here"
-                // 'icon' : 'resources/images/mark.png'
-            }, function(marker) {
-                marker.showInfoWindow();
-        });
 
-        map.animateCamera({
-            'target': abc,
-            'tilt': 60,
-            'zoom': 18,
-            'bearing': 140
-        });
+    map.addMarker(
+    {
+        'position': abc,
+'title': "You are Here"
+}, function(marker) {
+    marker.showInfoWindow();
+});
+
+    map.animateCamera({
+        'target': abc,
+        'tilt': 60,
+        'zoom': 18,
+        'bearing': 140
+    });
 }
 
 
 function plotLine(dots){
     map.addPolyline({
-      points: [
-      dots
-      ],
-      'color' : '#AA00FF',
-      'width': 10,
-      'geodesic': true
-  }, function(polyline) {
+        points: [
+        dots
+        ],
+        'color' : '#AA00FF',
+        'width': 10,
+        'geodesic': true
+    }, function(polyline) {
 
-      setTimeout(function() {
-        polyline.remove();
-    }, 5000);
-  });
+        setTimeout(function() {
+            polyline.remove();
+        }, 5000);
+    });
 }
 
 function onError(error) {
@@ -203,56 +128,90 @@ function storLoc(pos){
 
 
 function storeLoc(pos){
-        var dateTime = new Date();
-        alert(JSON.stringify(pos));
-        localStorage.setItem( 'dateTime'  ,JSON.stringify(pos));
-        $('#list').html('<p>'+retrievedObject+'</p>');
     
-
+   var d = new Date();
+   alert("in storeLoc");
+   /* var sth = get localstorage.nar
+    sth.push(JSON.stringify({"location":pos,"date":d}));
+    localstorage.setItem('nar', sth);*/
+    var nar = new Date().getTime();
+    var formattedDate = native5.utils.DateUtils.formatDate(new Date(), {"format" : "d M -h:i a"});
+    console.log(formattedDate);
+    localStorage.setItem( 'nar'  ,JSON.stringify({"location":pos, "displayDate": formattedDate , 'idd': nar}));
     
-    // for (var i = 1; i <= pos.length ; i++) {
-    //     var retrievedObject = localStorage.getItem('');
-    //     alert('retrievedObject: ', JSON.parse(retrievedObject));
-    //  };
-    // $('#list').html('<p>'+retrievedObject+'</p>');
 }
 
-/*
-// StopWatch Block
+ 
+function findDistance(){   
+    alert("in findDistance");
+    var retrievedObject = JSON.parse(localStorage.getItem('nar'));
+    alert(retrievedObject.location[0]);
+    var lat1 = parseInt(retrievedObject.location[0].lat);
+    alert(1);
+    var lon1 = parseInt(retrievedObject.location[0].lng);
+    alert(2);
+    var l = retrievedObject.length ;
+    alert(3);
+    var lat2 = parseInt(retrievedObject.location[1].lat);
+    alert(4);
+    var lon2 = parseInt(retrievedObject.location[1].lng);
+    alert("after taking all the info");
 
-/*function stopWatch(){
-    var startTime = null ;
-    var stopTime = null ;
-    var running = false ;
 
-    function getTIme(){
-        var day = new date();
-        return day.getTime();
-    }
+    var radlat1 = Math.PI * lat1/180;
 
-    this.start = function(){
-        if (running == true ){
-            return ;
-        }
-        else if(startTime != null){
-            stopTime = null ;
-            running = true ;
-            startTime = getTime();
-        }
 
-        this.stop = function(){
-            if(running == false) return;
-            stopTime = getTime();
-            return false;
-        }
+    alert(radlat1);
 
-        this.duration = function(){
-            if(startTime == null || stopTime == null){
-                return 'Not Working';
-                else
-                    return {(stopTime - startTime)/1000};
-            }
-        }
+    var radlat2 = Math.PI * lat2/180;
 
-    }
-}*/
+    alert(radlat2);
+
+    var radlon1 = Math.PI * lon1/180;
+
+    alert(radlon1);
+
+    var radlon2 = Math.PI * lon2/180;
+
+      alert(radlon2);
+
+    var theta = lon1-lon2;
+
+
+    var radtheta = Math.PI * theta/180;
+
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+
+
+    dist = Math.acos(dist);
+    alert(dist);
+
+
+    dist = dist * 180/Math.PI;
+    alert(dist);
+
+    dist = dist * 60 * 1.1515;
+alert(dist);
+    dist = dist * 1.609344;
+
+   /* if (unit=="K") { dist = dist * 1.609344 };
+
+    if (unit=="N") { dist = dist * 0.8684 };*/
+
+
+    alert(dist+"km");
+
+    alert(last);
+
+    
+   alert(dist);/*
+
+
+
+
+    
+    $distance = document.getElementById('distance');
+
+    $dictance.innerHTML = dist ;
+*/
+}

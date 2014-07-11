@@ -34,9 +34,9 @@
          var abc = new plugin.google.maps.LatLng(position.coords.latitude,position.coords.longitude);
          plotLine(locArray.push[abc]);
          // time = position.timestamp ;
-         $(".time").append( ""+(new Date(time)).toLocaleTimeString()) ;
+         // $(".time").append( ""+(new Date(time)).toLocaleTimeString()) ;
          // $(".time").append( ""+ new _StopWatch.duration()) ;
-         $(".distance").append( ""+(new Date(time)).toLocaleTimeString()) ;
+         // $(".distance").append( ""+(new Date(time)).toLocaleTimeString()) ;
          // alert("time: " + (new Date(time)).toLocaleTimeString());
          // db.transaction(queryDB, errorCB);
 

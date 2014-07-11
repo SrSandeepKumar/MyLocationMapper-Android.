@@ -39,6 +39,14 @@ tr{
 	width:80%;
 }
 
+.lsitCheckBox{
+	 padding-left: 2px;
+    padding-right: 2px;
+    margin: 5px;
+    height: 3em;   
+    width: 3em;
+}
+
 .toPlot{
 	width:80%;
 }
