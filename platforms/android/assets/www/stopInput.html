@@ -1,0 +1,50 @@
+<html> 
+<head>
+	<title> Take Info. </title>
+</head>
+<link rel="stylesheet" type="text/css" href="resources/fonts/fonts/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="resources/styles/jquery.mobile-1.4.2.min.css">
+<link rel="stylesheet" type="text/css" href="resources/styles/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="resources/styles/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="resources/styles/settings.css">
+<meta name="msapplication-tap-highlight" content="no" />
+<body>
+	<h3> Details to Store. </h3>
+	<br/>
+<div class="classs">
+	<div class="form-group Ename">
+		<label for="name" class = "col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align:left">Name</label>
+		<input type="text" class="form-control"  data-container="body" data-toggle="tooltip" data-placement="top" title="Name should contain min 3 and max 20 characters and no special chracters are allowed ! " id = "name" placeholder="Enter Name" required>
+	</div>
+<br/>
+
+	<div class="form-group">
+		<label for="name" class = "col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:left" >Description</label>
+		<textarea class="form-control" rows="3" id="Edesc" placeholder="Describe" required></textarea>
+	</div>
+<br/>
+</div>
+	<div class="footer">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"  >
+				<a href="#" class=" sub btn btn-success btn-large"> 
+					<i class="fa fa-thumbs-o-up fa-1x "></i>
+					Submit
+				</a>
+			</div>
+
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<a href="#" class="clr btn btn-success btn-large">
+					<i class="fa fa-thumbs-o-down fa-1x"></i>
+					Clear
+				</a>
+			</div>
+	</div>
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script src="resources/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="resources/scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/scripts/native5.utils.DateUtils.js"></script>
+<script type="text/javascript" src="resources/scripts/stopInput.js"></script>
+<script type="text/javascript" src="resources/scripts/validate.min.js"></script>
+</body>
+</html>

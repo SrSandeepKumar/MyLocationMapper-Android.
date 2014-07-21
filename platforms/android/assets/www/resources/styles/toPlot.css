@@ -1,0 +1,38 @@
+div.bottom-logo{
+  z-index: 20000;
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 10%;
+  box-shadow: 3px 3px 2px #eee;
+  position: fixed;
+  bottom: 0.1em;
+  text-align: center;
+  vertical-align: center;
+} 
+
+#time{
+  text-align: center;
+  color: white;
+}
+
+.distance{
+  text-align: center;
+  color: white;
+}
+
+html,body {
+  height: 100%;
+  width: 100%;
+}
+
+#map_canvas{
+  width: 100%;
+  height: 89%;
+  background-color: #eee;
+
+}
+
+.mapType:active {
+    color: lightgreen;
+}

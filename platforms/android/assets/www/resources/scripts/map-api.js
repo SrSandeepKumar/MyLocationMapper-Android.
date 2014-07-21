@@ -1,80 +1,63 @@
-    // block of code : BOC
-    var map;
-    var q=1;
-    var abc;
-    window.locArray = [];
-    var time;
-    document.addEventListener("deviceready", function() {
-        var button = $("#button")[0];
-        var bstart = $("#bstart")[0];
-        var bstop = $("#bstop")[0];
-        var watchID = null ;
-        var options = { maximumAge: 3000, timeout: 10000, enableHighAccuracy: true };
-        var div = document.getElementById("map_canvas");
+var map;
+var q=1;
+var abc;
+window.locArray = [];
+var time;
+document.addEventListener("deviceready", function() {
+    var button = $("#button")[0];
+    var bstart = $("#bstart")[0];
+    var bstop = $("#bstop")[0];
+    var watchID = null ;
+    var clicks = false;
+    $('#mapType').html("Map");
+    $('#time').html("00:00:00");
+    $('#distance').html("0Km");
+    var options = { maximumAge: 3000, timeout: 10000, enableHighAccuracy: true };
+    var div = document.getElementById("map_canvas");
+    map = plugin.google.maps.Map.getMap(div);
 
-        map = plugin.google.maps.Map.getMap(div);
-
-        var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError,options);
-        // alert(1);
-
-        /*var db = window.openDatabase("location", "1.0", "LocationDB", 1000000);
-            
-         db.transaction(populateDB, errorCB, successCB);*/
-         
-    }, false);
-
-    // $( ".bottom-logo" ).show( "slow",function(){
-    //      // var time = position.timestamp ;
-         
-         
-    // });
-
-    function onSuccess(position) {
-
-         var abc = new plugin.google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-         plotLine(locArray.push[abc]);
-         // time = position.timestamp ;
-         // $(".time").append( ""+(new Date(time)).toLocaleTimeString()) ;
-         // $(".time").append( ""+ new _StopWatch.duration()) ;
-         // $(".distance").append( ""+(new Date(time)).toLocaleTimeString()) ;
-         // alert("time: " + (new Date(time)).toLocaleTimeString());
-         // db.transaction(queryDB, errorCB);
-
-        map.addMarker(
-            {
-                'position': abc,
-                // 'animation':google.maps.Animation.BOUNCE,
-                'title': "You are Here"
-                // 'icon' : 'resources/images/mark.png'
-            }, function(marker) {
-                marker.showInfoWindow();
-        });
-
-        map.animateCamera({
-            'target': abc,
-            'tilt': 60,
-            'zoom': 18,
-            'bearing': 140
-        });
-
-        function plotLine(dots){
-            map.addPolyline({
-              points: [
-              abc
-              ],
-              'color' : '#AA00FF',
-              'width': 10,
-              'geodesic': true
-          }, function(polyline) {
-
-              setTimeout(function() {
-                polyline.remove();
-            }, 3000);
-          });
+    $(".mapType").click(function() {
+        if (clicks) {
+            map.setMapTypeId(plugin.google.maps.MapTypeId.ROADMAP);
+            clicks = false;
+            var type = document.getElementById('mapType');
+            type.innerHTML = "Map";
+        } else {
+            map.setMapTypeId(plugin.google.maps.MapTypeId.HYBRID);
+            clicks = true;
+            var type = document.getElementById('mapType');
+            type.innerHTML = "Earth";
         }
+    });
 
-    }
+    var watchID = navigator.geolocation.getCurrentPosition(onSuccess1, onError1,options);     
+}, false);
 
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
-    }
+
+function onSuccess1(position) {
+    map.clear();
+    var abc = new plugin.google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+
+    map.animateCamera({
+        'target': abc,
+        'tilt': 60,
+        'zoom': 18,
+        'bearing': 140
+    });
+
+    map.addMarker(
+    {
+        'position': abc,                
+    }, function(marker) {
+});
+
+}
+
+function onError1(error) {
+    alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+}
+
+document.addEventListener("backbutton", function(){
+  event.preventDefault();
+    
+}, false);

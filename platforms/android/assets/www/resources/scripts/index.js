@@ -48,10 +48,5 @@ var app = {
     }
 };
 
-$(document).ready(function(){
-    $(".btn").popover({
-        placement : 'top'
-    });
-});
 
 

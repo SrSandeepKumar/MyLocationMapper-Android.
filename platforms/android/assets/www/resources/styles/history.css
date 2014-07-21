@@ -1,0 +1,14 @@
+body {
+	background-color: #888888;
+	text-align: left;
+	font-family: "georgia";
+    font-size: 2em;
+    background-image: url('../images/green_dust_scratch.png');
+ 	max-height:100%;
+}
+
+.panel{
+	margin-bottom:01%;
+	margin-left: 0.5%;
+	margin-right: 0.5%;
+}
