@@ -15,7 +15,7 @@ ActionBar.prototype.SHOW_AS_ACTION_NEVER = 0;
 ActionBar.prototype.SHOW_AS_ACTION_IF_ROOM = 1;
 ActionBar.prototype.SHOW_AS_ACTION_ALWAYS = 2;
 ActionBar.prototype.SHOW_AS_ACTION_WITH_TEXT = 4;
-ActionBar.prototype.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW = 8;
+ActionBar.prototype.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW = 50;
 
 ActionBar.prototype.getHeight = function(callback)
 {

@@ -74,6 +74,7 @@ document.addEventListener("deviceready", function() {
 }, false);
 
 document.addEventListener("backbutton", function(){
-  event.preventDefault();
-    
+ if(confirm("Going back to History ?")){
+        window.location = "history.html";
+    }
 }, false);

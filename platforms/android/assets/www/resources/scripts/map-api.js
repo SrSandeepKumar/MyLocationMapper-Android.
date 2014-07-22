@@ -57,7 +57,3 @@ function onError1(error) {
     alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 }
 
-document.addEventListener("backbutton", function(){
-  event.preventDefault();
-    
-}, false);

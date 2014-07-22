@@ -91,7 +91,11 @@ $(document).ready(function(){
     });
 
 });
+
 document.addEventListener("backbutton", function(){
-  event.preventDefault();
+if(confirm("Going back to Map ?")){
+        window.location = "index.html";
+    }
+
     
 }, false);

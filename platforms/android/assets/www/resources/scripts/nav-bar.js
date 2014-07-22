@@ -9,31 +9,33 @@ document.addEventListener('deviceready', function() {
             watchPosition();
             show();
             start();
-            // findDistance(locArray);
-            a = true;
-        }
-    },
+// findDistance(locArray);
+a = true;
+}
+},
 
-    {
-        text: 'Stop',
-        click: function() {
-             if(a == true){
-            storeLoc(locArray);
-            map.refreshLayout();
-            map.setVisible(false);
-           
-            window.location = "stopInput.html";
-            if (watchID != null) {
-                navigator.geolocation.clearWatch(watchID);
-                watchID = null;
-            }
-            locArray.length = 0;
+{
+    text: 'Stop',
+    click: function() {
+        if(a == true){
+            if(confirm("Do you want to save trail ?")){
+                storeLoc(locArray);
+                map.refreshLayout();
+                map.setVisible(false);
+
+                window.location = "stopInput.html";
+                if (watchID != null) {
+                    navigator.geolocation.clearWatch(watchID);
+                    watchID = null;
+                }
+                locArray.length = 0;
+            }else{window.location = "index.html";}
         }
     }
-    }
-    ], function(e) {
-        console.log(e);
-    });
+}
+], function(e) {
+    console.log(e);
+});
 
 
     window.plugins.navBar.setTabs([
@@ -49,10 +51,10 @@ document.addEventListener('deviceready', function() {
     { 
         text: ' history',
         selected: false,
-        select: function() {
+        select: function() {if(a == false){
             map.refreshLayout();
             map.setVisible(false);
-            window.location = "history.html";
+            window.location = "history.html";}
         }
     }
 
@@ -74,8 +76,8 @@ function watchPosition(){
 function onSuccess(position){
     var abc = new plugin.google.maps.LatLng(position.coords.latitude,position.coords.longitude);
     locArray.push(abc);
-    findDistance(locArray);
-    points.plotLine(locArray);
+    var d = findDistance(locArray);
+    if(parseInt(d) > 0 )points.plotLine(locArray);
 }
 
 
@@ -98,7 +100,7 @@ function storeLoc(pos){
    
     if( localStorage.getItem('nar') === null){
         console.log(formattedDate);
-        localStorage.setItem( 'nar'  ,JSON.stringify([{"location":pos, "displayDate": formattedDate , 'idd': nar , 'time':t ,'distance' : dist }]));
+        localStorage.setItem( 'nar'  ,JSON.stringify([{"location":pos, "displayDate": formattedDate , 'idd': nar , 'time':t ,'distance' : (dist*1000) }]));
     }
     else
     {
@@ -161,12 +163,14 @@ else
         });
 
         console.log(distk);
-        return distk ; 
+        return dist ; 
 
     }
 }
 
 document.addEventListener("backbutton", function(){
-  event.preventDefault();
-    
+  // event.preventDefault();
+    if(confirm("want to exit ?")){
+        navigator.app.exitApp();
+    }
 }, false);
