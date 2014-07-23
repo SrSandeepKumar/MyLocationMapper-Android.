@@ -77,7 +77,7 @@ function onSuccess(position){
     var abc = new plugin.google.maps.LatLng(position.coords.latitude,position.coords.longitude);
     locArray.push(abc);
     var d = findDistance(locArray);
-    if(parseInt(d) > 0 )points.plotLine(locArray);
+    if(parseInt(d  * 1000) > 5 ) points.plotLine(locArray);
 }
 
 
@@ -100,7 +100,7 @@ function storeLoc(pos){
    
     if( localStorage.getItem('nar') === null){
         console.log(formattedDate);
-        localStorage.setItem( 'nar'  ,JSON.stringify([{"location":pos, "displayDate": formattedDate , 'idd': nar , 'time':t ,'distance' : (dist*1000) }]));
+        localStorage.setItem( 'nar'  ,JSON.stringify([{"location":pos, "displayDate": formattedDate , 'idd': nar , 'time':t ,'distance' : (dist) }]));
     }
     else
     {
@@ -163,7 +163,7 @@ else
         });
 
         console.log(distk);
-        return dist ; 
+        return distk ; 
 
     }
 }
