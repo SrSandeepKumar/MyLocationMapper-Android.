@@ -21,3 +21,4 @@ var points = (function ($, points) {
 		plotLine: plotLine,
 	};
 }(jQuery, points || {}));
+

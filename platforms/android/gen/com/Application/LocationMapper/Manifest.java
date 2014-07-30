@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.App.MyLocationMapper;
+package com.Application.LocationMapper;
 
 public final class Manifest {
     public static final class permission {

@@ -3,7 +3,10 @@ var q=1;
 var abc;
 window.locArray = [];
 var time;
+errorInGettingPostion = false;
 document.addEventListener("deviceready", function() {
+
+
     var button = $("#button")[0];
     var bstart = $("#bstart")[0];
     var bstop = $("#bstop")[0];
@@ -35,6 +38,7 @@ document.addEventListener("deviceready", function() {
 
 
 function onSuccess1(position) {
+    errorInGettingPostion = false;
     map.clear();
     var abc = new plugin.google.maps.LatLng(position.coords.latitude,position.coords.longitude);
 
@@ -54,6 +58,7 @@ function onSuccess1(position) {
 }
 
 function onError1(error) {
-    alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+    alert("Could not determine your current Location , Kindly ensure GPS and Internet is enabled!");
+    errorInGettingPostion = true;
 }
 

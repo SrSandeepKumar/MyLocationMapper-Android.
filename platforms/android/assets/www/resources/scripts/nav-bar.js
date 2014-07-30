@@ -1,5 +1,7 @@
 var target = [];
-var a = false ;
+var a = true ;
+// var toasting = true;
+errorInGettingPostion = true;
 document.addEventListener('deviceready', function() {
 
     window.plugins.navBar.setMenu([
@@ -7,17 +9,29 @@ document.addEventListener('deviceready', function() {
         text: 'Start',
         click: function() {
             watchPosition();
+            if(errorInGettingPostion == false){
+            if(a == true){
+           window.plugins.toast.showLongCenter('Starting to Mark your track', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+           a = false;
+            // toasting = false;
             show();
             start();
+        }}
+        else{
+            window.plugins.toast.showLongCenter('Could not determine your current Location , Kindly ensure GPS and Internet is enabled !', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+            a = true;
+        }
+            
 // findDistance(locArray);
-a = true;
+
 }
 },
 
 {
     text: 'Stop',
     click: function() {
-        if(a == true){
+        if(a == false){
+            // toasting == true;
             if(confirm("Do you want to save trail ?")){
                 storeLoc(locArray);
                 map.refreshLayout();
@@ -42,7 +56,7 @@ a = true;
     { 
         text: ' map',
         selected:true,
-        select: function() {
+        select: function() { 
                 map.clear();
                 map.setVisible(true);
         }
@@ -70,7 +84,7 @@ a = true;
 
 function watchPosition(){
     var option = { timeout: 30000 };
-    var watchID = navigator.geolocation.watchPosition(onSuccess, onError, option);
+   watchID = navigator.geolocation.watchPosition(onSuccess, onError, option);
 }
 
 function onSuccess(position){
@@ -78,12 +92,15 @@ function onSuccess(position){
     locArray.push(abc);
     var d = findDistance(locArray);
     if(parseInt(d  * 1000) > 5 ) points.plotLine(locArray);
+    errorInGettingPostion = false;
 }
 
 
 
 function onError(error) {
-    alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+    // alert("Could not determine your current Location , Kindly ensure GPS and Internet is enabled !");
+    errorInGettingPostion = true;
+    console.log(errorInGettingPostion);
 }
 
 

@@ -35,7 +35,6 @@ $(".clr").on('click',function(){
 $(".sub").on('click',function(){
 
 	if(/^[ a-zA-Z0-9]{3,23}$/.test($("#name").val())){
-		alert("You entered" + " Name : " + $("#name").val()+ "\n" + " Description : "+$("#Edesc").val());
 		var f1 = JSON.parse(localStorage.getItem('nar'));
 		if($("#name").val() == " " || $("#name").val() == null ){f1[f1.length-1].name = "NotSpecified"}
 			else
@@ -46,13 +45,13 @@ $(".sub").on('click',function(){
 					else{
 						f1[f1.length-1].desc = $("#Edesc").val();}
 						console.log(f1[f1.length-1]);
-						alert("Sucessfully stored");
+						 window.plugins.toast.showLongCenter('Successfully Stored', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
 						localStorage.setItem( 'nar',JSON.stringify(f1));
 						console.log(JSON.parse(localStorage.getItem('nar')));
 						location.href = "history.html";
 					}
 					else{
-						alert("Please ckeck weather you have filled Name field and Conditions are satisfied !!! ");
+						alert("Please ckeck whether you have filled Name field and Conditions are satisfied !!! ");
 					}
 				});
 

@@ -32,7 +32,8 @@ document.addEventListener('deviceready', function() {
 var count = 0;
 
 function retrieveName(name) {
-    if ($.type(name) == "undefined")
+    console.log(name);
+    if ($.type(name) == "undefined" || name.trim() == "" )
         return "Not specified";
     else
         return name;
