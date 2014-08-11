@@ -3,83 +3,75 @@ var alpha = true ;
 // var toasting = true;
 errorInGettingPostion = true;
 document.addEventListener('deviceready', function() {
+    window.plugins.navBar.setSelectedTab(0);
+    window.plugins.navBar.menu = [
+        {
+            text: 'Start',
+            click: function() {
+                watchPosition();
+                if(errorInGettingPostion == false){
+                    if(alpha == true){
+                        window.plugins.toast.showLongCenter('Starting to Mark your track', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
+                        alpha = false;
+                        show();
+                        start();
+                    }
+                }
+                else{
+                    window.plugins.toast.showLongCenter('Could not determine your current Location , Kindly ensure GPS and Internet is enabled !', function(a){console.log('toast success: ' + a)}, function(b){console.log('toast error: ' + b)});
+                    alpha = true;
+                }
 
-    window.plugins.navBar.setMenu([
-    {
-        text: 'Start',
-        click: function() {
-            watchPosition();
-            if(errorInGettingPostion == false){
-            if(alpha == true){
-           window.plugins.toast.showLongCenter('Starting to Mark your track', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
-           alpha = false;
-            // toasting = false;
-            show();
-            start();
-        }}
-        else{
-            window.plugins.toast.showLongCenter('Could not determine your current Location , Kindly ensure GPS and Internet is enabled !', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
-            alpha = true;
+            }
+        },
+
+        {
+            text: 'Stop',
+            click: function() {
+                if(alpha == false){
+                    // toasting == true;
+                    if(confirm("Do you want to save trail ?")){
+                        storeLoc(locArray);
+                        map.refreshLayout();
+                        map.setVisible(false);
+
+                        window.location = "stopInput.html";
+                        if (watchID != null) {
+                            navigator.geolocation.clearWatch(watchID);
+                            watchID = null;
+                        }
+                        locArray.length = 0;
+                    }
+                    else{
+                        window.location = "index.html";
+                    }
+                }
+            }
         }
-            
-// findDistance(locArray);
+    ];
 
-}
-},
+    window.plugins.navBar.tabs = [
+        { 
+            text: ' Map',
+            select: function() { 
+                    // map.clear();
+                    // map.setVisible(true);
+            }
+        },
 
-{
-    text: 'Stop',
-    click: function() {
-        if(alpha == false){
-            // toasting == true;
-            if(confirm("Do you want to save trail ?")){
-                storeLoc(locArray);
+        { 
+            text: ' History',
+            select: function() {
+                // if(alpha == false){
                 map.refreshLayout();
                 map.setVisible(false);
-
-                window.location = "stopInput.html";
-                if (watchID != null) {
-                    navigator.geolocation.clearWatch(watchID);
-                    watchID = null;
-                }
-                locArray.length = 0;
-            }else{window.location = "index.html";}
+                window.location.href = "history.html";
+            }
+                
+            // }
         }
-    }
-}
-], function(e) {
-    console.log(e);
-});
 
-
-    window.plugins.navBar.setTabs([
-    { 
-        text: ' map',
-        selected:true,
-        select: function() { 
-                map.clear();
-                map.setVisible(true);
-        }
-    },
-
-    { 
-        text: ' history',
-        selected: false,
-        select: function() {
-            // if(alpha == false){
-            map.refreshLayout();
-            map.setVisible(false);
-            window.location = "history.html";}
-        // }
-    }
-
-    ], function(e) {
-        console.log(e);
-    }
-    );
-
-    window.plugins.navBar.setNavigationMode(window.plugins.navBar.NAVIGATION_MODE_TABS);
-    window.plugins.navBar.setSelectedTab(0);
+    ];
     window.plugins.navBar.show();
 });
 

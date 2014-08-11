@@ -58,7 +58,7 @@ function onSuccess1(position) {
 }
 
 function onError1(error) {
-    alert("Could not determine your current Location , Kindly ensure GPS and Internet is enabled!");
+    window.plugins.toast.showLongCenter('Could not determine your current Location , Kindly ensure GPS and Internet is enabled !');
     errorInGettingPostion = true;
 }
 

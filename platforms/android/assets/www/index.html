@@ -21,7 +21,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
 
 
 
@@ -31,7 +31,6 @@
     <link rel="stylesheet" type="text/css" href="resources/styles/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="resources/styles/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="resources/styles/bootstrap-theme.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="resources/styles/bootstrap-theme.min.css">
     <meta name="msapplication-tap-highlight" content="no" />
 
@@ -70,14 +69,40 @@
 
 
             <script type="text/javascript" src="cordova.js"></script>
+            <script type="text/javascript" src="resources/scripts/jquery.min.js"></script>
             <script type="text/javascript" src="resources/scripts/index.js"></script>
-            <script src="resources/scripts/jquery-1.10.2.min.js"></script>
             <script type="text/javascript" src="resources/scripts/bootstrap.min.js"></script>
-            <script type="text/javascript" src="resources/scripts/Toast.js"></script>
-             <script type="text/javascript" src="resources/scripts/stopwatch.js"></script>
-         <script type="text/javascript" src="resources/scripts/map-api.js"></script> 
+            <script type="text/javascript" src="resources/scripts/stopwatch.js"></script>
+            <script type="text/javascript" src="resources/scripts/map-api.js"></script> 
             <script type="text/javascript" src="resources/scripts/native5.utils.DateUtils.js"></script>
-             <script type="text/javascript" src="resources/scripts/plotLine.js"></script> 
+            <script type="text/javascript" src="resources/scripts/plotLine.js"></script> 
+            <script type="text/javascript">
+                document.addEventListener('deviceready', function() {
+                    window.plugins.navBar.setTabs([
+                    { 
+                        text: ' Map',
+                        selected:false,
+                        select: function() {
+                            window.location.href = "index.html"; 
+                        }
+                    },
+
+                    { 
+                        text: ' History',
+                        selected:false,
+                        select: function() {
+                            map.refreshLayout();
+                            map.setVisible(false);
+                            window.location.href = "history.html";
+                        }
+                    }
+
+                    ]);
+
+                    window.plugins.navBar.setNavigationMode(window.plugins.navBar.NAVIGATION_MODE_TABS);
+                });
+
+            </script> 
             <script type="text/javascript" src="resources/scripts/nav-bar.js"></script> 
             <!-- <script type="text/javascript" src="resources/scripts/stopInput.js"></script>  -->
             
