@@ -1,5 +1,5 @@
 var target = [];
-var a = true ;
+var alpha = true ;
 // var toasting = true;
 errorInGettingPostion = true;
 document.addEventListener('deviceready', function() {
@@ -10,16 +10,16 @@ document.addEventListener('deviceready', function() {
         click: function() {
             watchPosition();
             if(errorInGettingPostion == false){
-            if(a == true){
+            if(alpha == true){
            window.plugins.toast.showLongCenter('Starting to Mark your track', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
-           a = false;
+           alpha = false;
             // toasting = false;
             show();
             start();
         }}
         else{
             window.plugins.toast.showLongCenter('Could not determine your current Location , Kindly ensure GPS and Internet is enabled !', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)});
-            a = true;
+            alpha = true;
         }
             
 // findDistance(locArray);
@@ -30,7 +30,7 @@ document.addEventListener('deviceready', function() {
 {
     text: 'Stop',
     click: function() {
-        if(a == false){
+        if(alpha == false){
             // toasting == true;
             if(confirm("Do you want to save trail ?")){
                 storeLoc(locArray);
@@ -65,11 +65,12 @@ document.addEventListener('deviceready', function() {
     { 
         text: ' history',
         selected: false,
-        select: function() {if(a == false){
+        select: function() {
+            // if(alpha == false){
             map.refreshLayout();
             map.setVisible(false);
             window.location = "history.html";}
-        }
+        // }
     }
 
     ], function(e) {
