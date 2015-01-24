@@ -8,9 +8,9 @@
 
 ##### Secondary Aim.     
 The app. was later modified into      
-1. Get routes from server & present to user, based on user's selection their will be a route plotted on map.
-2. when started the route location being travelled will be send back to server, where it will be recorded.
-3. Incident report, when user choose the option to report his current location will be send back to server when it will noted. 
+1. Get routes from server & present to user, based on user's selection their will be a route plotted on map.   
+2. when started the route location being travelled will be send back to server, where it will be recorded.   
+3. Incident report, when user choose the option to report his current location will be send back to server when it will noted.    
 
 ##### Requirements.     
 1. Obtain a key using your Google account credentials and activate the API you want to use, in this case i am using "Google Maps API v2" @ [Google API Console] (https://code.google.com/apis/console).
