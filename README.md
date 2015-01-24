@@ -34,7 +34,7 @@ After cloning the App. these are the steps you can perform:
 [Migrating to Android Studio] (http://developer.android.com/sdk/installing/migrate.html)
 
 
-## Wanto Tweek the App. ?
+## Want to Tweek Location Mapper ?
 > ### Resource
 > [Navigation bar] (https://github.com/polychrom/cordova-android-actionbar.)     
 > [Toast] (https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin)    
