@@ -35,7 +35,7 @@ After cloning the App. these are the steps you can perform:
 
 
 ## Want to Tweek Location Mapper ?
-> ### Resource
+> ### Resources :
 > [Navigation bar] (https://github.com/polychrom/cordova-android-actionbar.)     
 > [Toast] (https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin)    
 > [Google Maps Android API]  (https://github.com/wf9a5m75/phonegap-googlemaps-plugin. )    
